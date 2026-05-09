@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Notebook — generated with runcell</title>
+    <meta name="description" content="Exported with runcell — convert .ipynb notebooks to HTML or PDF anytime at runcell.dev." />
+    <meta name="generator" content="runcell" />
+    <style>
+        :root {
+            --jp-code-font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+            --jp-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --jp-cell-prompt-width: 64px;
+            --jp-input-prompt-color: #307fc1;
+            --jp-output-prompt-color: #bf5b3d;
+            --jp-cell-input-bg: #f7f7f7;
+            --jp-layout-color0: #ffffff;
+            --jp-layout-color1: #f7f7f7;
+            --jp-border-color1: #e0e0e0;
+            --jp-content-font-color0: #000000;
+            --jp-content-font-color1: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--jp-content-font-family);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--jp-content-font-color0);
+            background-color: var(--jp-layout-color0);
+            margin: 0;
+            padding: 0;
+        }
+
+        .notebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cell structure */
+        .cell {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cell-prompt {
+            min-width: var(--jp-cell-prompt-width);
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-code-font-family);
+            font-size: 12px;
+            padding: 10px 8px 10px 0;
+            text-align: right;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .cell-content {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Input prompt styling - Jupyter blue */
+        .input-prompt {
+            color: var(--jp-input-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Output prompt styling - Jupyter red/orange */
+        .output-prompt {
+            color: var(--jp-output-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Code cell input area */
+        .input-area {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            overflow-x: auto;
+        }
+
+        .input-area pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Output area */
+        .output-area {
+            margin-top: 0;
+        }
+
+        .output-wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 4px;
+        }
+
+        .output-content {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 0;
+        }
+
+        .output-content pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Stream output (stdout/stderr) */
+        .output-stream {
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-stderr {
+            background-color: #fdd;
+            padding: 8px 12px;
+            border-radius: 2px;
+        }
+
+        /* Execute result / display data */
+        .output-result {
+            padding: 4px 0;
+        }
+
+        .output-result pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+        }
+
+        /* Image output */
+        .output-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* HTML output (DataFrames, etc.) */
+        .output-html {
+            overflow-x: auto;
+        }
+
+        .output-html table {
+            border-collapse: collapse;
+            font-size: 13px;
+            font-family: var(--jp-content-font-family);
+        }
+
+        .output-html table th,
+        .output-html table td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .output-html table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .output-html table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Error output */
+        .output-error {
+            background-color: #fff0f0;
+            padding: 8px 12px;
+            border-radius: 2px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Markdown cell styling */
+        .markdown-cell {
+            padding: 10px 0;
+        }
+
+        .markdown-cell h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0.67em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0.83em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin: 1em 0;
+        }
+
+        .markdown-cell h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin: 1.33em 0;
+        }
+
+        .markdown-cell h5 {
+            font-size: 0.875em;
+            font-weight: 600;
+            margin: 1.67em 0;
+        }
+
+        .markdown-cell h6 {
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2.33em 0;
+            color: #6a737d;
+        }
+
+        .markdown-cell p {
+            margin: 0 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .markdown-cell code {
+            font-family: var(--jp-code-font-family);
+            font-size: 85%;
+            background-color: rgba(27, 31, 35, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .markdown-cell pre {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 3px;
+            padding: 16px;
+            overflow-x: auto;
+            font-size: 85%;
+            line-height: 1.45;
+        }
+
+        .markdown-cell pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 100%;
+        }
+
+        .markdown-cell blockquote {
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+            color: #6a737d;
+            border-left: 4px solid #dfe2e5;
+        }
+
+        .markdown-cell ul,
+        .markdown-cell ol {
+            margin: 0 0 16px 0;
+            padding-left: 2em;
+        }
+
+        .markdown-cell li {
+            margin: 0.25em 0;
+        }
+
+        .markdown-cell a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .markdown-cell a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown-cell hr {
+            border: 0;
+            border-top: 1px solid var(--jp-border-color1);
+            margin: 24px 0;
+        }
+
+        .markdown-cell img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .markdown-cell table {
+            border-collapse: collapse;
+            margin: 0 0 16px 0;
+        }
+
+        .markdown-cell table th,
+        .markdown-cell table td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+
+        .markdown-cell table th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+
+        .markdown-cell table tr:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+
+        /* Raw cell styling */
+        .raw-cell {
+            background-color: var(--jp-layout-color1);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Empty prompt placeholder */
+        .prompt-empty {
+            color: transparent;
+        }
+
+        .export-footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--jp-border-color1);
+            color: #555;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .export-footer a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .export-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container">
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">- <strong>Name:</strong> Aj Kean Edoria<br>- <strong>Term:</strong> Term 3, AY25-26</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">##### Required Python Packages<br>Run the following applications once if they are not yet installed in your Python environment:</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [2]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install numpy</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Requirement already satisfied: numpy in C:\Users\admin\miniconda3\envs\control-system-cpe2a\Lib\site-packages (2.4.4)
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [1]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install scipy</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Collecting scipy
+  Downloading scipy-1.17.1-cp313-cp313-win_amd64.whl.metadata (60 kB)
+Collecting numpy&lt;2.7,&gt;=1.26.4 (from scipy)
+  Downloading numpy-2.4.4-cp313-cp313-win_amd64.whl.metadata (6.6 kB)
+Downloading scipy-1.17.1-cp313-cp313-win_amd64.whl (36.5 MB)
+   ---------------------------------------- 0.0/36.5 MB ? eta -:--:--
+   -- ------------------------------------- 2.1/36.5 MB 8.6 MB/s eta 0:00:05
+   ---- ----------------------------------- 3.7/36.5 MB 7.8 MB/s eta 0:00:05
+   ----- ---------------------------------- 4.7/36.5 MB 6.8 MB/s eta 0:00:05
+   ------- -------------------------------- 7.1/36.5 MB 6.9 MB/s eta 0:00:05
+   ---------- ----------------------------- 9.4/36.5 MB 7.4 MB/s eta 0:00:04
+   ----------- ---------------------------- 10.5/36.5 MB 7.0 MB/s eta 0:00:04
+   ------------ --------------------------- 11.5/36.5 MB 6.8 MB/s eta 0:00:04
+   -------------- ------------------------- 13.4/36.5 MB 7.0 MB/s eta 0:00:04
+   ---------------- ----------------------- 15.2/36.5 MB 7.0 MB/s eta 0:00:04
+   ------------------ --------------------- 16.8/36.5 MB 7.2 MB/s eta 0:00:03
+   -------------------- ------------------- 18.6/36.5 MB 7.1 MB/s eta 0:00:03
+   ---------------------- ----------------- 21.0/36.5 MB 7.2 MB/s eta 0:00:03
+   ------------------------ --------------- 22.8/36.5 MB 7.3 MB/s eta 0:00:02
+   -------------------------- ------------- 24.4/36.5 MB 7.3 MB/s eta 0:00:02
+   ---------------------------- ----------- 26.0/36.5 MB 7.1 MB/s eta 0:00:02
+   --------------------------------- ------ 30.1/36.5 MB 7.2 MB/s eta 0:00:01
+   ----------------------------------- ---- 32.0/36.5 MB 7.2 MB/s eta 0:00:01
+   ------------------------------------- -- 34.1/36.5 MB 7.2 MB/s eta 0:00:01
+   -------------------------------------- - 35.1/36.5 MB 7.1 MB/s eta 0:00:01
+   ---------------------------------------  36.2/36.5 MB 7.0 MB/s eta 0:00:01
+   ---------------------------------------  36.4/36.5 MB 6.9 MB/s eta 0:00:01
+   ---------------------------------------  36.4/36.5 MB 6.9 MB/s eta 0:00:01
+   ---------------------------------------  36.4/36.5 MB 6.9 MB/s eta 0:00:01
+   ---------------------------------------  36.4/36.5 MB 6.9 MB/s eta 0:00:01
+   ---------------------------------------- 36.5/36.5 MB 5.1 MB/s  0:00:07
+Downloading numpy-2.4.4-cp313-cp313-win_amd64.whl (12.3 MB)
+   ---------------------------------------- 0.0/12.3 MB ? eta -:--:--
+   ----------------- ---------------------- 5.5/12.3 MB 7.1 MB/s eta 0:00:01
+   ----------------------- ---------------- 7.3/12.3 MB 7.0 MB/s eta 0:00:01
+   ------------------------------ --------- 9.4/12.3 MB 7.3 MB/s eta 0:00:01
+   ------------------------------------- -- 11.5/12.3 MB 7.3 MB/s eta 0:00:01
+   ---------------------------------------  12.1/12.3 MB 7.3 MB/s eta 0:00:01
+   ---------------------------------------- 12.3/12.3 MB 6.1 MB/s  0:00:02
+Installing collected packages: numpy, scipy
+
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   ---------------------------------------- 0/2 [numpy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   -------------------- ------------------- 1/2 [scipy]
+   ---------------------------------------- 2/2 [scipy]
+
+Successfully installed numpy-2.4.4 scipy-1.17.1
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [3]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install matplotlib</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Collecting matplotlib
+  Downloading matplotlib-3.10.9-cp313-cp313-win_amd64.whl.metadata (52 kB)
+Collecting contourpy&gt;=1.0.1 (from matplotlib)
+  Downloading contourpy-1.3.3-cp313-cp313-win_amd64.whl.metadata (5.5 kB)
+Collecting cycler&gt;=0.10 (from matplotlib)
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools&gt;=4.22.0 (from matplotlib)
+  Downloading fonttools-4.62.1-cp313-cp313-win_amd64.whl.metadata (119 kB)
+Collecting kiwisolver&gt;=1.3.1 (from matplotlib)
+  Downloading kiwisolver-1.5.0-cp313-cp313-win_amd64.whl.metadata (5.2 kB)
+Requirement already satisfied: numpy&gt;=1.23 in C:\Users\admin\miniconda3\envs\control-system-cpe2a\Lib\site-packages (from matplotlib) (2.4.4)
+Requirement already satisfied: packaging&gt;=20.0 in C:\Users\admin\miniconda3\envs\control-system-cpe2a\Lib\site-packages (from matplotlib) (26.0)
+Collecting pillow&gt;=8 (from matplotlib)
+  Downloading pillow-12.2.0-cp313-cp313-win_amd64.whl.metadata (9.0 kB)
+Collecting pyparsing&gt;=3 (from matplotlib)
+  Downloading pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+Requirement already satisfied: python-dateutil&gt;=2.7 in C:\Users\admin\miniconda3\envs\control-system-cpe2a\Lib\site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in C:\Users\admin\miniconda3\envs\control-system-cpe2a\Lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+Downloading matplotlib-3.10.9-cp313-cp313-win_amd64.whl (8.2 MB)
+   ---------------------------------------- 0.0/8.2 MB ? eta -:--:--
+   ------ --------------------------------- 1.3/8.2 MB 7.2 MB/s eta 0:00:01
+   -------------- ------------------------- 2.9/8.2 MB 6.8 MB/s eta 0:00:01
+   ------------------- -------------------- 3.9/8.2 MB 6.1 MB/s eta 0:00:01
+   ------------------------- -------------- 5.2/8.2 MB 5.9 MB/s eta 0:00:01
+   ------------------------------ --------- 6.3/8.2 MB 5.8 MB/s eta 0:00:01
+   ----------------------------------- ---- 7.3/8.2 MB 5.7 MB/s eta 0:00:01
+   ---------------------------------------  8.1/8.2 MB 5.5 MB/s eta 0:00:01
+   ---------------------------------------  8.1/8.2 MB 5.5 MB/s eta 0:00:01
+   ---------------------------------------  8.1/8.2 MB 5.5 MB/s eta 0:00:01
+   ---------------------------------------  8.1/8.2 MB 5.5 MB/s eta 0:00:01
+   ---------------------------------------  8.1/8.2 MB 5.5 MB/s eta 0:00:01
+   ---------------------------------------  8.1/8.2 MB 5.5 MB/s eta 0:00:01
+   ---------------------------------------  8.1/8.2 MB 5.5 MB/s eta 0:00:01
+   ---------------------------------------- 8.2/8.2 MB 2.9 MB/s  0:00:02
+Downloading contourpy-1.3.3-cp313-cp313-win_amd64.whl (226 kB)
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading fonttools-4.62.1-cp313-cp313-win_amd64.whl (2.3 MB)
+   ---------------------------------------- 0.0/2.3 MB ? eta -:--:--
+   ------------- -------------------------- 0.8/2.3 MB 3.8 MB/s eta 0:00:01
+   -------------------------- ------------- 1.6/2.3 MB 4.1 MB/s eta 0:00:01
+   ---------------------------------------- 2.3/2.3 MB 3.7 MB/s  0:00:00
+Downloading kiwisolver-1.5.0-cp313-cp313-win_amd64.whl (73 kB)
+Downloading pillow-12.2.0-cp313-cp313-win_amd64.whl (7.1 MB)
+   ---------------------------------------- 0.0/7.1 MB ? eta -:--:--
+   ----- ---------------------------------- 1.0/7.1 MB 5.5 MB/s eta 0:00:02
+   ------------- -------------------------- 2.4/7.1 MB 6.2 MB/s eta 0:00:01
+   ------------------- -------------------- 3.4/7.1 MB 5.4 MB/s eta 0:00:01
+   -------------------------- ------------- 4.7/7.1 MB 5.7 MB/s eta 0:00:01
+   ---------------------------------- ----- 6.0/7.1 MB 5.9 MB/s eta 0:00:01
+   ---------------------------------------- 7.1/7.1 MB 5.9 MB/s  0:00:01
+Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+Installing collected packages: pyparsing, pillow, kiwisolver, fonttools, cycler, contourpy, matplotlib
+
+   ---------------------------------------- 0/7 [pyparsing]
+   ----- ---------------------------------- 1/7 [pillow]
+   ----- ---------------------------------- 1/7 [pillow]
+   ----- ---------------------------------- 1/7 [pillow]
+   ----- ---------------------------------- 1/7 [pillow]
+   ----- ---------------------------------- 1/7 [pillow]
+   ----- ---------------------------------- 1/7 [pillow]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ----------------- ---------------------- 3/7 [fonttools]
+   ---------------------------- ----------- 5/7 [contourpy]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------- ----- 6/7 [matplotlib]
+   ---------------------------------------- 7/7 [matplotlib]
+
+Successfully installed contourpy-1.3.3 cycler-0.12.1 fonttools-4.62.1 kiwisolver-1.5.0 matplotlib-3.10.9 pillow-12.2.0 pyparsing-3.3.2
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [4]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install panda</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Collecting panda
+  Downloading panda-0.3.1.tar.gz (5.8 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: setuptools in C:\Users\admin\miniconda3\envs\control-system-cpe2a\Lib\site-packages (from panda) (82.0.1)
+Collecting requests (from panda)
+  Downloading requests-2.33.1-py3-none-any.whl.metadata (4.8 kB)
+Collecting charset_normalizer&lt;4,&gt;=2 (from requests-&gt;panda)
+  Downloading charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl.metadata (41 kB)
+Collecting idna&lt;4,&gt;=2.5 (from requests-&gt;panda)
+  Downloading idna-3.13-py3-none-any.whl.metadata (8.0 kB)
+Collecting urllib3&lt;3,&gt;=1.26 (from requests-&gt;panda)
+  Downloading urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi&gt;=2023.5.7 (from requests-&gt;panda)
+  Downloading certifi-2026.4.22-py3-none-any.whl.metadata (2.5 kB)
+Downloading requests-2.33.1-py3-none-any.whl (64 kB)
+Downloading charset_normalizer-3.4.7-cp313-cp313-win_amd64.whl (158 kB)
+Downloading idna-3.13-py3-none-any.whl (68 kB)
+Downloading urllib3-2.7.0-py3-none-any.whl (131 kB)
+Downloading certifi-2026.4.22-py3-none-any.whl (135 kB)
+Building wheels for collected packages: panda
+  Building wheel for panda (pyproject.toml): started
+  Building wheel for panda (pyproject.toml): finished with status 'done'
+  Created wheel for panda: filename=panda-0.3.1-py3-none-any.whl size=7295 sha256=f2c58b941b7e69a9f75a893a8357a34f76a188b1d92d51ec18c7e4b93f43dc8e
+  Stored in directory: c:\users\admin\appdata\local\pip\cache\wheels\53\7c\f7\d3267739bc9dfdfc43724391337c9955e7d5b5830888d735e3
+Successfully built panda
+Installing collected packages: urllib3, idna, charset_normalizer, certifi, requests, panda
+
+   ---------------------------------------- 0/6 [urllib3]
+   ------ --------------------------------- 1/6 [idna]
+   ------------- -------------------------- 2/6 [charset_normalizer]
+   -------------------------- ------------- 4/6 [requests]
+   --------------------------------- ------ 5/6 [panda]
+   ---------------------------------------- 6/6 [panda]
+
+Successfully installed certifi-2026.4.22 charset_normalizer-3.4.7 idna-3.13 panda-0.3.1 requests-2.33.1 urllib3-2.7.0
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [5]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install gekko</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Collecting gekko
+  Downloading gekko-1.3.2-py3-none-any.whl.metadata (3.2 kB)
+Requirement already satisfied: numpy&gt;=1.8 in C:\Users\admin\miniconda3\envs\control-system-cpe2a\Lib\site-packages (from gekko) (2.4.4)
+Downloading gekko-1.3.2-py3-none-any.whl (13.2 MB)
+   ---------------------------------------- 0.0/13.2 MB ? eta -:--:--
+   --- ------------------------------------ 1.3/13.2 MB 8.0 MB/s eta 0:00:02
+   --------- ------------------------------ 3.1/13.2 MB 7.9 MB/s eta 0:00:02
+   -------------- ------------------------- 4.7/13.2 MB 8.0 MB/s eta 0:00:02
+   ------------------- -------------------- 6.3/13.2 MB 8.0 MB/s eta 0:00:01
+   ----------------------- ---------------- 7.6/13.2 MB 7.7 MB/s eta 0:00:01
+   ---------------------------- ----------- 9.4/13.2 MB 7.7 MB/s eta 0:00:01
+   ---------------------------------- ----- 11.3/13.2 MB 7.8 MB/s eta 0:00:01
+   -------------------------------------- - 12.6/13.2 MB 7.8 MB/s eta 0:00:01
+   ---------------------------------------- 13.2/13.2 MB 7.4 MB/s  0:00:01
+Installing collected packages: gekko
+Successfully installed gekko-1.3.2
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [6]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install scikit-learn</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Collecting scikit-learn
+  Downloading scikit_learn-1.8.0-cp313-cp313-win_amd64.whl.metadata (11 kB)
+Requirement already satisfied: numpy&gt;=1.24.1 in C:\Users\admin\miniconda3\envs\control-system-cpe2a\Lib\site-packages (from scikit-learn) (2.4.4)
+Requirement already satisfied: scipy&gt;=1.10.0 in C:\Users\admin\miniconda3\envs\control-system-cpe2a\Lib\site-packages (from scikit-learn) (1.17.1)
+Collecting joblib&gt;=1.3.0 (from scikit-learn)
+  Downloading joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+Collecting threadpoolctl&gt;=3.2.0 (from scikit-learn)
+  Downloading threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Downloading scikit_learn-1.8.0-cp313-cp313-win_amd64.whl (8.0 MB)
+   ---------------------------------------- 0.0/8.0 MB ? eta -:--:--
+   ------- -------------------------------- 1.6/8.0 MB 8.9 MB/s eta 0:00:01
+   ----------------- ---------------------- 3.4/8.0 MB 9.0 MB/s eta 0:00:01
+   -------------------------- ------------- 5.2/8.0 MB 8.7 MB/s eta 0:00:01
+   ---------------------------------- ----- 6.8/8.0 MB 8.7 MB/s eta 0:00:01
+   ---------------------------------------  7.9/8.0 MB 8.6 MB/s eta 0:00:01
+   ---------------------------------------- 8.0/8.0 MB 7.8 MB/s  0:00:01
+Downloading joblib-1.5.3-py3-none-any.whl (309 kB)
+Downloading threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Installing collected packages: threadpoolctl, joblib, scikit-learn
+
+   ------------- -------------------------- 1/3 [joblib]
+   ------------- -------------------------- 1/3 [joblib]
+   ------------- -------------------------- 1/3 [joblib]
+   ------------- -------------------------- 1/3 [joblib]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   -------------------------- ------------- 2/3 [scikit-learn]
+   ---------------------------------------- 3/3 [scikit-learn]
+
+Successfully installed joblib-1.5.3 scikit-learn-1.8.0 threadpoolctl-3.6.0
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [7]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install sympy</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Collecting sympy
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting mpmath&lt;1.4,&gt;=1.1.0 (from sympy)
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ---------------------------------------- 0.0/6.3 MB ? eta -:--:--
+   ------ --------------------------------- 1.0/6.3 MB 5.5 MB/s eta 0:00:01
+   -------------- ------------------------- 2.4/6.3 MB 6.1 MB/s eta 0:00:01
+   ----------------------- ---------------- 3.7/6.3 MB 6.2 MB/s eta 0:00:01
+   ------------------------------- -------- 5.0/6.3 MB 6.2 MB/s eta 0:00:01
+   ---------------------------------------- 6.3/6.3 MB 6.4 MB/s  0:00:00
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ---------------------------------------- 0.0/536.2 kB ? eta -:--:--
+   ---------------------------------------- 536.2/536.2 kB 4.4 MB/s  0:00:00
+Installing collected packages: mpmath, sympy
+
+   ---------------------------------------- 0/2 [mpmath]
+   ---------------------------------------- 0/2 [mpmath]
+   ---------------------------------------- 0/2 [mpmath]
+   ---------------------------------------- 0/2 [mpmath]
+   ---------------------------------------- 0/2 [mpmath]
+   ---------------------------------------- 0/2 [mpmath]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   -------------------- ------------------- 1/2 [sympy]
+   ---------------------------------------- 2/2 [sympy]
+
+Successfully installed mpmath-1.3.0 sympy-1.14.0
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Machine Problem 001: Laplace Transforms and Sympy</h3><br><br>Laplace transforms convert a function $f(t)$ in the time domain into function in the Laplace domain $F(s)$.<br><br>$F(s) = \mathcal{L}\left(f(t)\right) = \int_0^\infty f(t)e^{-s\,t}dt$<br><br>The SymPy library is a symbolic mathematics library written for Python that can be used to perform analytical calculations. This library can be very useful for control system design and analysis.</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Table of Common Laplace Transforms</h3><br>Mathematicians have developed tables of commonly used Laplace transforms. Here is summary table with a few of the entries that will be most common for analysis of linear differential equations.<br><br>| <strong>Item no.</strong> | <strong>f(t)</strong>                | <strong>F(s)</strong>                           |<br>|--------------|-------------------------|------------------------------------|<br>| 1.           | $ \delta(t) $           | $ 1 $                              |<br>| 2.           | $ u(t) $                | $ \frac{1}{s} $                    |<br>| 3.           | $ tu(t) $               | $ \frac{1}{s^2} $                  |<br>| 4.           | $ t^n u(t) $            | $ \frac{n!}{s^{n+1}} $             |<br>| 5.           | $ e^{-at}u(t) $         | $ \frac{1}{s + a} $                |<br>| 6.           | $ \sin(\omega t)u(t) $  | $ \frac{\omega}{s^2 + \omega^2} $  |<br>| 7.           | $ \cos(\omega t)u(t) $  | $ \frac{s}{s^2 + \omega^2} $       |<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [8]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import sympy as sym
+from sympy.abc import s,t,u,x,y,z,a,b,c,k
+from sympy.integrals import laplace_transform</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [9]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># For pretty  printing
+sym.init_printing()</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [10]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define variables for time 't' and complex variable 's'
+# t = sym.symbols('t', real=True)
+# s = sym.symbols('s')
+
+# Define a constant:
+# a = sym.symbols('a', real=True, positive=True)</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">1. Evaluate:<br><br>$$ \mathcal{L}\{\delta(t)\} = 1 $$<br><br>As an example of the Laplace transform, consider a constant $1$. The function $f(t) = 1$ and the following expression is integrated. <br><br>$\mathcal{L}(1)=\int_0^\infty 1 \, e^{-s\,t} dt = -\frac{1}{s}e^{-s\,t} \biggr\rvert_0^\infty = 0 - \left(-\frac{1}{s} \right) = \frac{1}{s}$<br><br>Notice that the derived value for a constant $1$ is the unit step function with $f(t)=1$ where a signal output changes from 0 to 1 at $time=0$. <br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [11]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the time domain function:
+f1 = 1
+f1</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[11]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAJFJREFUeJzt0qEKAlEQheFvxarZbBCbvoHRajAKZqOwURjuw/gcBt9DEIxG+8qFDcviwlpM/jBhhhnmzHCKqqp8y7CZpJS2WGGJBUY4R8SucwinuvmFB+afNg1a+REzjHHoJS8iLg2pnTe1N/XiP1Tzu0cUTcOmlDbIkZlgjRuude0ZEWXbe9mo+1ZtWkfmjvINcckbvxdX11QAAAAASUVORK5CYII=" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [12]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Compute the Laplace Transform:
+f1s = laplace_transform(f1, t, s, noconds=True)
+f1s</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[12]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAASCAYAAABM8m7ZAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAetJREFUeJzF1U2Ij1EUBvDfjMEsUEKjZDMkCzVIVj6KxML4ip0iOwsLNRtSp6MoOytLO5OFRhaaTD4KCwsbxYby1WRjJKKkGN16p955TfrP/Kc8deu99573POd57lfH+Pi4/4GueiczD2M71qMPC3EtIo7+K0lm9uADrkTEqWkT41xF+A2jWNuigP3oxFCL8UpwHaexBotwstUkOIhPeNjqD131TkQ8mPjOzJYSZGYpcgcGI+JXY25rJaYPK/AVb3GvafVMsBfzcLNBehYX8B53MIayFzZh92wQF5u/Y6RGWgjO4zF2RsTPRlFLm2s8LWRmN/ZgOCJ+1KbKppyDl03SgogYa1fxLixo2owX+IITmbmsHMniSER8nghoSzEOoSi63VSELbhRrMZ1fMzM4czc2BZxZhYr+3E/Ioq6SYiI5xFxBIsrZ4aqZRnJzPntWL0NS6awuVlAceRuaZn5qHKip7PN3fwbt+qDmbkhM1c1gzNzNdZVx2u0o/5IZOYBlFawvJw3vEaptGAsIgYyswPvSpKIKArqOa7iOJ7gaXX99mJfFdIfEX9dIOVxONYY662aimygugRW4vIUThQH5mJzVUB39YAM4lJEvCpBkxS3isy8iDOloIh4M+0EZr6ry/o+mylpwYwUzwb+AEgbm2GKl9ToAAAAAElFTkSuQmCC" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">2. Evaluate:<br><br>$$ \mathcal{L}\{u(t)\} = \frac{1}{s} $$<br>$$ \mathcal{L}\{t\} = \frac{1}{s^2} $$<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [13]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the time domain function:
+f2 = t
+f2</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[13]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAPCAYAAADZCo4zAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAK5JREFUeJx9kLEOAUEYhL8TCb0H0AuJ8DgKHQ2FSvlnCqLS02m8hF6HQig8hlCI4mQvKzln76bYyW6+nUwmiuOYIpWzD5ImwBLomdm2FPjU9X5wRx7wAG7uEn07SFoA06IOR2AD9IE9sPtJcJI0AFbA0MzWoQ4d7y4tUQh4A+c/QJLr0wKuZvYKJTSAajo+C7S9n/KAmvd7GkjvkEwLzCQ1gSdwye4wAsZAHagA8w8rhjG+gXh9pQAAAABJRU5ErkJggg==" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [14]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Compute the Laplace Transform:
+f2s = laplace_transform(f2, t, s, noconds=True)
+f2s</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[14]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAfCAYAAADqUJ2JAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAYtJREFUeJztlDtLHVEUhb8xQhBTWQgRfBSpUgW0sJA0gnXAWlQkjU2EKCnXWUljI/gTQqxEAsEfoKIgYiNqIE0qUwWCTUIEEa5sGOWCd+694wNEXHCGM5vNOvu5skqlwm2gtZbR9mtgFugHuoBJSZ/rEbUU2J8B34F3wElTIUVq9U5K6V9KaaKRX1FEpdHySNQQWa2BtB3tf5H/bgPzwCpwLOmoTLEHgL38tAV3fv9YKqKH0f7W+Ni+UX6SsuxOZaQatruBJaATOAM+SVq5To3OgBlJL4ERYNF2+xWvRvJQuSor+yml7hvJiO1QzCeSfpWu0QVsdwBfgLfUwCWR7QyYA6aAHuAvsCVp1PZT4FvsnKTtukQ5yQQwDfwEngOv8gdC+NckRfdq4nKObK/FYkp6X+1gewjYBA6qzGOSDouIZoAFYB2IOfkq6U9RBIUR5WShQW/iRaAPGJT0ozRRFWHU7jg6JGm5zNJ+AH4Du/kkjwOnwEazqV10LdobZL3Af2AHGJYU5E3h/inkOV5T5VkPa1gHAAAAAElFTkSuQmCC" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">3. Evaluate:<br>$$ \mathcal{L}\{tu(t)\} = \frac{1}{s^2} $$<br>$$ \mathcal{L}\{5t\} = \frac{5}{s^2} $$<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [15]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Laplace transform (t-&gt;s)
+U = laplace_transform(5*t, t, s)
+U[0]</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[15]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAfCAYAAADqUJ2JAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAcFJREFUeJzNlc9LVFEUxz+TAwW6KomERiMKpJXgpkWLQIiWQWtREDethIggiO/70saFin9CPxYhEgTtpygY1I1YiAgRVKBF0aYIkomJC1cZZd74bkr0hffgHc793HPPOe/cUqPR4DBUbmW0nQHaY/4s6VQSKGoduNz0/Ts5oqi6pE/tFhcFnbW9AfwCFoE7kt7lOR/JsYeFo8BVYBwIuanZPpEHKhWpmu0uIEQzKWkmJaJdkvQDWAXO5/kUAtk+BvQDm6l9NAU8Az4AJ4G7QCfwIAkEnAYeA93AF2ABuCjp/YGSXUSFcvRPQeXwsn2g80kqHVqOyvs52K4Aj2Ib1IF7kub/Jkd1YELSBeAKMGs79NRuhaOlPFmWrWRZVtlrT6qa7UGgQ9LH5Bxty/Zx4GEcK+SCbJeAW8AY0At8B15Jum77KPA0jpFaW1CEhGF2A3gL9AADcYP7QFVSqF5L7fSR7SqwLOlms4PtS8BL4HWTeVjSmzzQBDANPAdCnzyR9DUvgtyIIuwccC3sCJyJo2MtGdQEDLn7FiokaS7lp70dblJgKXbyCLAFvCh6tO2qhfIGWB/wM07EIUkBXkj/34T8Ayg8yjlfNOyLAAAAAElFTkSuQmCC" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">4. Evaluate:<br><br>$$ \mathcal{L}\{t^n u(t)\} = \frac{n!}{s^{n+1}} $$<br>$$ \mathcal{L}\{t^2\} = \frac{2}{s^{3}} $$<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [16]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the time domain function:
+f4 = t**2
+f4</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[16]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAU1JREFUeJytk08rBWEUxn9zs7Bgw4dQosROFvgEsqGEHXXLQind1dNZKCuyoNhJ2VhaomSBjT/lT/IFLEVjITR6a4a37ty5d+69p97O1Dnz63nepzeIoohmVkueZTMrAeNAF/AJXAIlSffJTiGngGFgCxgERoFv4NjMOpKFoBHLZtYGvAFjkg5TLZvZIrAGTEnar8Jsj12+ZlkeiPtVDSI3gFvgIisUBwyB5yySmTkXQ+5I+im7QzNbBZYr/D8jac+DrQOTwIikJ3/RV3gN7AKzwDlw5M1OPZizOZEGK0vZzOaAbWBe0s7f4H++CUy7VIFHbxRKCtNC6ffUplUxTvYEePHOUqVQHPALuEujSQqoUgXPjoP3OiuS3LOqqwredzfQmmE3N7Av7jfNAnbG/b0RoB9K8tRWzKwH+AAeJB3UpVDSGbAQg1yXdw011y8mMmiJ5Ik3RwAAAABJRU5ErkJggg==" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [17]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Compute the Laplace Transform:
+f4s = laplace_transform(f4, t, s, noconds=True)
+f4s</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[17]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAfCAYAAADqUJ2JAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAcNJREFUeJytlcFKVVEUhr8rF5okRQ3CSTpImjqqEJXUFwgd5CQKokmjoCSuk5//AVQcWJhPIFqTpmqFg6RJBVENomkEUYRyoUiubNzJ8XKO3n09C/aBs886H2v9a+21K41GgzKsmrdpuwaMAReBP8AmUJP0oQjUUbB/FXgE9AMjwD9g1faZIlClldRsnwR+A9ckPU+JqNk6o++vIodWQXPAO+B1kthZsz0DDIQlaactkO1ZYAIYlvT1MN9CkO2QzvUI+XxU5LlVsz0P3AhVAj5mPm1L2k4R+26s1BrwLbMeJEXUjnWUQqFEUDU8bB8rP0mV0jSqHuVg+3Q4+dE3rDlJi+1otAUMSeoDLgNTts8mR6S981WPrydCy8SVBsqk9wroBSYl/aDJksS2fQ54FsawpO+5EdkO4U4Ct4HzUZsNSeP/fcLPtt8Dg8BKLihCbsVz9gXoAvpiFHVJW7ZPBeGBx4Wp2V4H3kq635TOJeBJRuR5SQuHge4B08ALYBl4midqkR0Q2/aFOIPCLOoBrkj6lAzKAIN2P4E7kpZSDu1DIJTzTbwMbwJ/gZetQPZBsWMDrDt2cbiiR5t7JTm1dqy0wbYL/yWngJwzuE4AAAAASUVORK5CYII=" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">5. Evaluate:<br><br>$$ \mathcal{L}\{e^{-at}u(t)\} = \frac{1}{s + a} $$<br>Solution:<br>$$ \mathcal{L}\{e^{-at}\} = \int_0^\infty \, e^{-a\,t} e^{-s\,t} dt $$<br>$$ = \int_0^\infty \, e^{-(s+a)\,t} dt $$<br>$$ = \frac{e^{-(s+a)t}}{-(s+a)} \biggr\rvert_0^\infty $$<br>$$ = 0 - \left(-\frac{1}{s+a} \right) = \frac{1}{s+a} $$</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [18]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the time domain function:
+f5 = sym.exp(-a*t)
+f5</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[18]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAUCAYAAAD/Rn+7AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAgxJREFUeJztlk2ITlEYx3/3NcwshGKDWIgwCAn5KFmYUhZCjISUDUUWLET9+xf52rCkJOVjIQsLRBaahQULHxslG7JkRU0y06tnel7deRszDXW9C/+695zn3Oec8z/P17lFvV6nlVGjxWD7gu1HLUsQWAE8bwhFlS62fRLYDswCeoH7wAFJvbbHAd+AsaUpb6u2YFsQAhYAO4ENwJH81gesyv5KYCqwplILNsP2FaBd0t6UNwG3gImS6o0T/TFsnwJOjKC2XtJT2zOAYyED04FwaTtwvqS7FHjdIPdbgra3AvuB5cAE4ANwDTgnqb+kehG4MQLBj7YnAy+AHuAo8Anoz7FXJd0lwMvy5EEEbY/JDbuB98Ad4DuwETgNzAUG3BGQ9BmIZ1jY3gZ0ADsa1rEd64xvIrgYeFie25wkl5LcWWC+pMiwCOKFwDNgj+1ORo8vSWaz7dm2D+UeX9MQZYPNsz3N9qRBBG1H5hwE7kk6LqmvZKkfwPUUQ2+0eABczjXioHOAm8CbcrxlPHdnCJyJgV9ZbDtcuwu4DbwbYpOw4kBsSrpKRWgr9buyjfo0HCJhKkMRFrTdkZW9R9I6Wgi1bItsp9BiqMUr7sIIWKDT9pahFG2vzTJUKYpSknTl5R1x+SQJ17LqL4tLXNLMqgnWGh1Jj4HVwF1gEXAY2B31MAnv4x+g+P9Hzd/hJxHyp+WxDewdAAAAAElFTkSuQmCC" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [19]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Compute the Laplace Transform:
+f5s = laplace_transform(f5, t, s, noconds=True)
+f5s</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[19]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAaCAYAAADfcP5FAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAelJREFUeJzllk+EV1EUxz+/J/2hXZuUGhJNoqIWbYpkaEQiGrNq0mra1KJE4vu+s0qKWU67aREx2gxTkYghqaEo2swsahc1m18qiV/uuG88r5fJ9PhdM18O7z3n3Pu933PePafV6XRICRmJYc1yA20fAS4DB4AtwDlJ491UaCPwDrgIfKcphBr6X8vz/Gue50NNrJVcDWUkhozEkJEYMhJDa7k3te3w2++Mr8+BG8AkMC/pYzcUOgi8jrYhcIzPI11RaNXUUEaKzdV2Mnlrrcgasj1uO298HrJ9HTgD7IgjxRQwLKmR8cJ2C7gCnAe2A21gWtLpvykUCA4De4BBoA+4RHMIZIaAC0AvcBJ4UiWwCEll2T/YnoqBTeE48EjS02IP4EUtIdvb4gmOAluBtcA64GZ1VdvXgGAFgl/HdhhpC/RLmq6EhtZy2/Y+YAJ4IOlz2WEhZbY3Aa+AzXFOPhxbww/gTc1Jx4D9JZus+TZTDZI0CuwCHse0zdneXafQCWA9MCBp4R6wfTbOzX8QkjQfmmhJsXZsqrM15KuxweeW7dG4xl7gfZXQl7j5Kdtvg9wxJW1gyU3+BbavAp+Al8AvIBz4J/Cs7FcQegjcAe7GNN0H7gGHCsUaQKizQKoH+BaL+ZikQHIRvwF/nflBfx1hkgAAAABJRU5ErkJggg==" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">6. Evaluate:<br><br>$$ \mathcal{L}\{\sin(\omega t)u(t)\} = \frac{\omega}{s^2 + \omega^2} $$<br>$$ \mathcal{L}\{\sin(4t)\} = \frac{4}{s^2 + 16} $$<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [20]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the time domain function:
+f6 = sym.sin(4*t)
+f6</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[20]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAUCAYAAAA0nZtFAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAA7pJREFUeJztmGuIVWUYhZ9Rg6RAqaggKgPJkqKy7CIUGlr0Jwr/RZlJJQTdoOgCtVyl5R+VIkyyiFGKNMQikQaCsbALZSl0sxTKIiS7WXSxNCfeeM+0Z3fO3mdyTswPFxy+zbe/63rXe9mnq6+vj4P4ByMKzwcBjBosC7bHAZ8B3ZJmDzWLtruBy4CTJP3SKSvZPhvYBNwg6clhqRDbk4FrgIV1ZNi+2nZf/q6vGHd7jrmq2C/pXeAF4EHbhx8IIV8BpwL3MPRYAPwEPF41yPbxwGPAz22sGUoIBAFlPAwcC9zynwmRtFfSVkk7GULYPhmYDqyW9FvFuC7gaeA7YFmbhARxn5ZfSHob2ArMtT3iXzHE9uXArcBE4IjcdBuwStLSVjGk2AfMC8nn5UKKH0SfpHU1B58DxGVX1YwLa14MTM22KWzHGe4qdO233XieJWllPj+XZ54B9PQrxPaNwItJxkvAImA9MBq4jvZwIhCsB0Er83Knxbq2p9XMDQL/BN6quGS4alz0EUmv1az3Xhoo8EZML/w2FMa9nu2MskLmAn8AZ0jaVTrIUbSHqamGflPYfhZ4GbgT6G1x0cOAM4GPWwVT26OS5C+Ae+sOImm17bHAtanmJ1oMfSfbi5rFkH3A3iaLf0t72AHML83tyUucWzHvOGAkUBWX7gfOAmZXxZgSJhXU0hSSfgT2ACeUFfJMuslHtsOvXg05SfqG9rFFUsi+jC+BCyrmHZntD81e2j4vVbFI0puDOM+kNPD7NeO+B44ZoBBJi1NeOzJwrQW+tt1r+5w2D7C7Rf++mozWsPihLVxlRWaJ+9o8R2Pe6WFgSb/XDB/dOMOALCMpNl6RvjcFuDKjf4/tUwaplsFgV0kpRUSmipQc2FPIFEUst708g+1t2TcxCW7pLoFMt2MzSzYv3SXtzgyzPifMyaCzhs4gYkeQPaHJu7DuUxUuEXFlI/AJUHSnCNKBzTV7T8h0v2UAIZkWN0gqf/4ene2vdAixp+1IozNtj5e0vfAupNy0NLc9LwnpLn6PlNQWlW8Vzs+2t6yQtVHR2Y464PNk7UJgcpa9r9BZhPpmApcC/YQcABql+gLbUQtFOv9Q0vOlcZdk/RM12IBAd3fm5JDhTVmMHZLV3rQo2ek8IRFLZg3FYlm43ZxERKuCG/0N22OAK4B1kiIT0jWc/iCyHR+MD4VRJG3+H/YLoh4NT5C0cdh9/gNLsoh7oNMb2Y5UGwZY0yBj2BEiKSrG+D9kU5bznUR8b0U5f0ex8y/JhFde0VuaDAAAAABJRU5ErkJggg==" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [21]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Compute the Laplace Transform:
+f6s = laplace_transform(f6, t, s, noconds=True)
+f6s</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[21]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAAAfCAYAAABH0YUgAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAtlJREFUeJzdmEmIlEcUx3/dNoioRDwICnoQNehBJ+jBwyCIIG4HQTCXxBUFjdvBBRX5+1eUORgy4IKI4BDJQaIgHtSLG6MiGggu6MENFRRFzCEHcW15Uj0MzTTTo3aP8/2gmu7q9736XtV7r+pVrlgskjUK9RjE9kZgJ7BX0opaj5ev9QC2JwJLgRvUiXwtldv+AfgLWAT8R53I11j/AeCopHNkIaZsLwFGAL9QZwq1UGr7x5QYGiW9o87kapHSbS8ADgEf2nX3AmKwj0BfSW/oYe53HPinrC+MvJtW8C09baU6wvZ54FYm9qnuIJfFY1KeDJIngxTiw3ZmfFBSLpMxVehMwPZQ4DAwCHgPbJf0Nz08pt4DaySNAaYCzbb78h2T66r72b4OzJL0hO+UQleEbY+PM9y3Nsj2JGAtEPqHAAsltXQgNxhoAmYA/YEHwDJJF74opdseCPyZqthqn2mxvbUK0X5xhAJWA68r6BoAXArvAmYCo4GVwIuKK2U7hNcBi4FhwP9Aq6Q5tnunQ2qTpMt8YySdBE6WJqKC2HrgmaR57foeduZ+YVCUDMuBe0AsdUMyNgY6KymyYHcxGzht+wgwGXgKHEyXOcVKRk0DTkk6k34/Aq7YbgR+josT26E4+FXSTerL8DThf6S4agB2p//2VDLqBPC77XFA7EPHJL2UdLHa2LO9CYhWIty2aDuSQInpklq/wKh81GiS4rot+Nf2SOC3cqPaXlZSMxBl+Ok0I/dtRzB2hf1pBkvtRAd95cVjtTwDbpf13UnxXzmlS4pY2mU7DHwFjE0PVoWkeCbaZ2xHsnmV9H4tl9Kkt2dUCpMOD7QbgOfA1XSCmJ9K7qhWa47tfunmqeQ9w2w3pAl5nPojli7b3gxEsvgJWFXm7m0KSr6/IblGpOyIqymSwtB6MCFiJLU+YWf6vq0kIOlayoBz0562A9gC7CtXlslTer67X6AWfAIFN/arvmsifAAAAABJRU5ErkJggg==" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">7. Evaluate:<br><br>$$ \mathcal{L}\{\cos(\omega t)u(t)\} = \frac{s}{s^2 + \omega^2} $$<br>$$ \mathcal{L}\{\cos(\frac{t}{2})\} = \frac{s}{s^2 + \frac{1}{4}} $$<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [22]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the time domain function:
+f7 = sym.cos(t/2)
+f7</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[22]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAUCAYAAAAa2LrXAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAABR9JREFUeJztmAus12MYxz+FJgwjt4nJkFpWSyWbWrk3t2RsZkKTppFM5Gy1rwfRXMq1TOU6pjisScmszCW3OIxiLivXdNwtQunYk+ff3vM77+//P6NNZ+u7/ffW733f533e5/k+l/e0a2pqYiv+Pdr/h71bAWzbFqxgZg8CQ4Aukn79H84/HFgKjJQ0M51rt6WHsJn1BV4Hxkmakpm/HPDv50h6tETGXsDXwDTgGuB04CTgMGBf4E/gPeB+/0nakJHxFNAfOFjSmrYUwpOAX4DpJfPODsdbVWScFnd9EjgTmAEcEY65DagHegDOrjlm1i4j40Zgb2BM+nGLNqCZHQIc65eStLaKAZ0RH1UR5Yz7Hngx1p0KdJbkrK2TNAI4FPgCOAMYVhQg6Q3gQ2CUmbUvzYFm1g+4AjgK6AT8EPSeKWlOsu4s4BKgJ9AB+ATwEJoi6Y+MXFf6MqA7sFtc6GNgtiQPrRz8Ys6G2Rl5k4HxyacNZlb593BJD8e6nYGjXTdJfwGLcgdJ+sbM7gnGDwpWFvFYpIDjgIUtGGhmI4ElwNAYbwWeAfYERifrbohLdQuj3RUX9e8LzaxDQe5FwNww3tMhdz7QEbiAcjj7/NKvZebeBry4ELpa8nshWXdyONhzWC2si3F9yfwrMboBmzPQzPxy0yLfDJC0LN1pZp1jPBKoC7r3c8/F97pQ0hUeF8asYFQk6p6SGgtyneUtYGY7Ar2AD3KV16PBzHYFznNDSrq3Svj6/udK5ivnuS2Gx3+fLVn2ZowDKx9SBl4cBr2uaLxQ+MskrBzXV4wX8+sj9L2CXZg5fH3i4VTudyXKenXcBlhFOXonbGwBM9seOBFYIOl3qmNyFJL5kjaGZ0bXnwGXs3/OgF6iHQtqHFRRelHmAE/QbuguZrZLMvUIsAOw3MymmtlQM9ujxjm7x/hjDV3WRY7OwUNtp1rha2ZjwvleJM6toZfXhE45A3o4OL6qIaBimFUl86sK8tywUyLUPos2wC+02swWm1mfEjmVqussKgs57+OW54pWYFikDs/jWZiZF8LbXQ4wWJIbqBo8b6/NGfCnJHSqwWlM9EQ57FNYtxGSHpLUP5jlTeysyCULS9jYWGBiEd3DuGXh6+F/ikdKhF5uzVjgTuD9MN6mlFSyvn0QozHXxnil6xNPJqdyGRoidAYBnxYOOMj7K2CFpIpDmiG+ewWeHwqNCEPWZ5j8LdC1RI9eiT45DAzjZ8PXzMZH3nvHQ71KLk7RNboN39OCgdMj0U+MikyuCgP3xTghZU54/JaQOauwd3BJd+/tkeO34oSkpmh8O4Vjiqgw07uGsuq7Idqn4l0mhvH89XJMK42X1onFLRgoyRO893reTDaY2dxodF3RvqGo03yJmd0EXOXUN7Mnok0YElXsZeDmwsHOgjVm5ixfGV4cEHL9Es+XKFwfL4MTolFPUXm6TTKzHqHDMkmPh7O8l31V0uqC8TwXXxv95Uuek5MGvIKVkh7I6HN87NvklGaNtKQZ8QKZFyF6ZTx7PJTuTtY5/c8OAw+PwuCyJkQ4eOJOcXX0UB76o6N53i5eEu6UdVUM2Jj0Z6muzs5Lw3A+KglrT0X7xdu3iC4xesSMjX3F3/nFTdFVuFPmSfIeuM38NaYumvLekhpaucfX+74DJa3YTHq4k+6IR4ZH2Zb/x4TAVODzCLvWwvPfu5vReB3DIfWp8dqEAfXPC8Kb26XxvGvNnm6SKuG8OXAA4E9Ff6I2w9/3JNvRDN4YuQAAAABJRU5ErkJggg==" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [23]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Compute the Laplace Transform:
+f7s = laplace_transform(f7, t, s, noconds=True)
+f7s</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[23]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAAeCAYAAAB9hg0IAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAspJREFUeJzlmFuIzVEUxn9nnJIoJRRlSMrlAYWixIMS5VaUF3KLBykeSJQ+HyWJmhc1eTFIEgrlllxqhoSSWx7wgCclTcklpkaL/a9pnHHOMJ1p/vPVPv33Pnutvdfa315771VobW2lN6BYjUFsF4BtwDqgFvgENEpaSp4M5beRq4GNwCtgGDCZKqJYpXHmAVck3Uj1N8A9cmjoReCQ7UnAGeCcpA9UEYVqBSPbY4AlwEpgFDBd0ovcGZrBdrDoI7Be0mnyQl3b24H3wH2gBVgFfAduk7M92hcIY0cCX1IQmiMpjCe31O0u1NBLUEMvQTF+bOeav5IKvWaPFst1sD0COAEMTcfDXklxu8ndHm0BtkiaAMwF6mz3p4eh0Fnq2n4MLJD0jh6EYmc6254C9OlqI23PArYCoX84sEZSQwd964Fvkra0a98B7AMOS9r0z8eL7UHAcWBDJ2QabO+uoOsA4BmwGfha5gG/CDjfrn16mteTsiv6tyyA7b5J+X5Jd+liSLoMXM6c85eu09KVsqnNvAcCJ4G1oaojwZoOsgDjkueuJwfE4DclRfTtTsQz75KkCJAZjgBnJd2qdI+WzALYngksD1rYjoECKyU9pfpYDOzKKrbXA/HOXVFOsFguCyCpqdK9bHsnECVD0KzVdgSaDPMlNVZqWRvdYdBo4Fqqj03BZ6akH+Xka7IPSXVACF9N9H1te3wn51Ofkl5ZuVii7SH/hmDTDUmfU30GMBh4brslCjA75p7q4eTSx4ukyNAdtF2XsgATgYrTHZJCJsov2I6A9jHp7QraHmtTP1/CaUeBl2ml43H/x6W+W7MAtuN4CWpmLKu1PTk56a3tIZFjApZlMpKageZ2ej4nmTiqSlI3ywKEh+L4mFTlLMBU4FEq/WLO6XtP+n8h8OB/5lPoCa8X2xeAO5IO5P3hfQc49T8KCj1hRbsCPwHedxs2FKNQdwAAAABJRU5ErkJggg==" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="export-footer">
+        Exported with <a href="https://www.runcell.dev/tool/ipynb-to-html">runcell</a> — convert notebooks to HTML or PDF anytime at runcell.dev.
+    </footer>
+</body>
+</html>
