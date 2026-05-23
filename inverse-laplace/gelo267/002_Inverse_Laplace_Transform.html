@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Notebook — generated with runcell</title>
+    <meta name="description" content="Exported with runcell — convert .ipynb notebooks to HTML or PDF anytime at runcell.dev." />
+    <meta name="generator" content="runcell" />
+    <style>
+        :root {
+            --jp-code-font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+            --jp-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --jp-cell-prompt-width: 64px;
+            --jp-input-prompt-color: #307fc1;
+            --jp-output-prompt-color: #bf5b3d;
+            --jp-cell-input-bg: #f7f7f7;
+            --jp-layout-color0: #ffffff;
+            --jp-layout-color1: #f7f7f7;
+            --jp-border-color1: #e0e0e0;
+            --jp-content-font-color0: #000000;
+            --jp-content-font-color1: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--jp-content-font-family);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--jp-content-font-color0);
+            background-color: var(--jp-layout-color0);
+            margin: 0;
+            padding: 0;
+        }
+
+        .notebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cell structure */
+        .cell {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cell-prompt {
+            min-width: var(--jp-cell-prompt-width);
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-code-font-family);
+            font-size: 12px;
+            padding: 10px 8px 10px 0;
+            text-align: right;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .cell-content {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Input prompt styling - Jupyter blue */
+        .input-prompt {
+            color: var(--jp-input-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Output prompt styling - Jupyter red/orange */
+        .output-prompt {
+            color: var(--jp-output-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Code cell input area */
+        .input-area {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            overflow-x: auto;
+        }
+
+        .input-area pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Output area */
+        .output-area {
+            margin-top: 0;
+        }
+
+        .output-wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 4px;
+        }
+
+        .output-content {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 0;
+        }
+
+        .output-content pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Stream output (stdout/stderr) */
+        .output-stream {
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-stderr {
+            background-color: #fdd;
+            padding: 8px 12px;
+            border-radius: 2px;
+        }
+
+        /* Execute result / display data */
+        .output-result {
+            padding: 4px 0;
+        }
+
+        .output-result pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+        }
+
+        /* Image output */
+        .output-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* HTML output (DataFrames, etc.) */
+        .output-html {
+            overflow-x: auto;
+        }
+
+        .output-html table {
+            border-collapse: collapse;
+            font-size: 13px;
+            font-family: var(--jp-content-font-family);
+        }
+
+        .output-html table th,
+        .output-html table td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .output-html table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .output-html table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Error output */
+        .output-error {
+            background-color: #fff0f0;
+            padding: 8px 12px;
+            border-radius: 2px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Markdown cell styling */
+        .markdown-cell {
+            padding: 10px 0;
+        }
+
+        .markdown-cell h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0.67em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0.83em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin: 1em 0;
+        }
+
+        .markdown-cell h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin: 1.33em 0;
+        }
+
+        .markdown-cell h5 {
+            font-size: 0.875em;
+            font-weight: 600;
+            margin: 1.67em 0;
+        }
+
+        .markdown-cell h6 {
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2.33em 0;
+            color: #6a737d;
+        }
+
+        .markdown-cell p {
+            margin: 0 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .markdown-cell code {
+            font-family: var(--jp-code-font-family);
+            font-size: 85%;
+            background-color: rgba(27, 31, 35, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .markdown-cell pre {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 3px;
+            padding: 16px;
+            overflow-x: auto;
+            font-size: 85%;
+            line-height: 1.45;
+        }
+
+        .markdown-cell pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 100%;
+        }
+
+        .markdown-cell blockquote {
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+            color: #6a737d;
+            border-left: 4px solid #dfe2e5;
+        }
+
+        .markdown-cell ul,
+        .markdown-cell ol {
+            margin: 0 0 16px 0;
+            padding-left: 2em;
+        }
+
+        .markdown-cell li {
+            margin: 0.25em 0;
+        }
+
+        .markdown-cell a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .markdown-cell a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown-cell hr {
+            border: 0;
+            border-top: 1px solid var(--jp-border-color1);
+            margin: 24px 0;
+        }
+
+        .markdown-cell img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .markdown-cell table {
+            border-collapse: collapse;
+            margin: 0 0 16px 0;
+        }
+
+        .markdown-cell table th,
+        .markdown-cell table td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+
+        .markdown-cell table th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+
+        .markdown-cell table tr:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+
+        /* Raw cell styling */
+        .raw-cell {
+            background-color: var(--jp-layout-color1);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Empty prompt placeholder */
+        .prompt-empty {
+            color: transparent;
+        }
+
+        .export-footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--jp-border-color1);
+            color: #555;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .export-footer a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .export-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container">
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">- <strong>Name:</strong> Marjune Angelo Eudela<br>- <strong>Term:</strong> AY 25-26</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">##### Required Python Packages<br>Run the following applications once if they are not yet installed in your Python environment:</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [1]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install numpy</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Requirement already satisfied: numpy in c:\users\zuget\miniconda3\lib\site-packages (2.4.4)
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [2]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install scipy</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Requirement already satisfied: scipy in c:\users\zuget\miniconda3\lib\site-packages (1.17.1)
+Requirement already satisfied: numpy&lt;2.7,&gt;=1.26.4 in c:\users\zuget\miniconda3\lib\site-packages (from scipy) (2.4.4)
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [3]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install matplotlib</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Requirement already satisfied: matplotlib in c:\users\zuget\miniconda3\lib\site-packages (3.10.9)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\zuget\miniconda3\lib\site-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\zuget\miniconda3\lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\zuget\miniconda3\lib\site-packages (from matplotlib) (4.62.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\zuget\miniconda3\lib\site-packages (from matplotlib) (1.5.0)
+Requirement already satisfied: numpy&gt;=1.23 in c:\users\zuget\miniconda3\lib\site-packages (from matplotlib) (2.4.4)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\zuget\miniconda3\lib\site-packages (from matplotlib) (25.0)
+Requirement already satisfied: pillow&gt;=8 in c:\users\zuget\miniconda3\lib\site-packages (from matplotlib) (12.2.0)
+Requirement already satisfied: pyparsing&gt;=3 in c:\users\zuget\miniconda3\lib\site-packages (from matplotlib) (3.3.2)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\zuget\miniconda3\lib\site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in c:\users\zuget\miniconda3\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.17.0)
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [4]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install panda</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Requirement already satisfied: panda in c:\users\zuget\miniconda3\lib\site-packages (0.3.1)
+Requirement already satisfied: setuptools in c:\users\zuget\miniconda3\lib\site-packages (from panda) (80.9.0)
+Requirement already satisfied: requests in c:\users\zuget\miniconda3\lib\site-packages (from panda) (2.32.5)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in c:\users\zuget\miniconda3\lib\site-packages (from requests-&gt;panda) (3.4.4)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\users\zuget\miniconda3\lib\site-packages (from requests-&gt;panda) (3.11)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in c:\users\zuget\miniconda3\lib\site-packages (from requests-&gt;panda) (2.5.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\zuget\miniconda3\lib\site-packages (from requests-&gt;panda) (2025.10.5)
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [5]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install gekko</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Requirement already satisfied: gekko in c:\users\zuget\miniconda3\lib\site-packages (1.3.2)
+Requirement already satisfied: numpy&gt;=1.8 in c:\users\zuget\miniconda3\lib\site-packages (from gekko) (2.4.4)
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [6]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install scikit-learn</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Requirement already satisfied: scikit-learn in c:\users\zuget\miniconda3\lib\site-packages (1.8.0)
+Requirement already satisfied: numpy&gt;=1.24.1 in c:\users\zuget\miniconda3\lib\site-packages (from scikit-learn) (2.4.4)
+Requirement already satisfied: scipy&gt;=1.10.0 in c:\users\zuget\miniconda3\lib\site-packages (from scikit-learn) (1.17.1)
+Requirement already satisfied: joblib&gt;=1.3.0 in c:\users\zuget\miniconda3\lib\site-packages (from scikit-learn) (1.5.3)
+Requirement already satisfied: threadpoolctl&gt;=3.2.0 in c:\users\zuget\miniconda3\lib\site-packages (from scikit-learn) (3.6.0)
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [7]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>!pip install sympy</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Requirement already satisfied: sympy in c:\users\zuget\miniconda3\lib\site-packages (1.14.0)
+Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in c:\users\zuget\miniconda3\lib\site-packages (from sympy) (1.3.0)
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Machine Problem 002: Inverse Laplace Transforms</h3><br><br>Finding a function $f(t)$, given the Laplace transform $F(s)$.  If $L{f(t)} = F(s)$ we write:<br><br>$f(t) = \mathcal{L}^{-1}\left(F(s)\right)$<br><br>The SymPy library is a symbolic mathematics library written for Python that can be used to perform analytical calculations. This library can be very useful for control system design and analysis.</div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>Table of Common Laplace Transforms</h3><br>Mathematicians have developed tables of commonly used Laplace transforms. Here is summary table with a few of the entries that will be most common for analysis of linear differential equations.<br><br>| <strong>Item no.</strong> | <strong>f(t)</strong>                | <strong>F(s)</strong>                           |<br>|--------------|-------------------------|------------------------------------|<br>| 1.           | $ \delta(t) $           | $ 1 $                              |<br>| 2.           | $ u(t) $                | $ \frac{1}{s} $                    |<br>| 3.           | $ tu(t) $               | $ \frac{1}{s^2} $                  |<br>| 4.           | $ t^n u(t) $            | $ \frac{n!}{s^{n+1}} $             |<br>| 5.           | $ e^{-at}u(t) $         | $ \frac{1}{s + a} $                |<br>| 6.           | $ \sin(\omega t)u(t) $  | $ \frac{\omega}{s^2 + \omega^2} $  |<br>| 7.           | $ \cos(\omega t)u(t) $  | $ \frac{s}{s^2 + \omega^2} $       |<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [8]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import sympy as sym
+from sympy.abc import s,t,u,x,y,z,a,b,c,k
+from sympy.integrals import inverse_laplace_transform</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [9]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># For pretty  printing
+sym.init_printing()</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [10]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define variables for time 't' and complex variable 's'
+# t = sym.symbols('t', real=True)
+# s = sym.symbols('s')
+
+# Define a constant:
+# a = sym.symbols('a', real=True, positive=True)</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">1. Evaluate:<br><br>$$ \mathcal{L}^{-1}\{\frac{2}{s^3}\} = t^2 $$</div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [11]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the frequency domain function:
+f1s = 2/s**3
+f1s</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[11]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAfCAYAAADqUJ2JAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAcNJREFUeJytlcFKVVEUhr8rF5okRQ3CSTpImjqqEJXUFwgd5CQKokmjoCSuk5//AVQcWJhPIFqTpmqFg6RJBVENomkEUYRyoUiubNzJ8XKO3n09C/aBs886H2v9a+21K41GgzKsmrdpuwaMAReBP8AmUJP0oQjUUbB/FXgE9AMjwD9g1faZIlClldRsnwR+A9ckPU+JqNk6o++vIodWQXPAO+B1kthZsz0DDIQlaactkO1ZYAIYlvT1MN9CkO2QzvUI+XxU5LlVsz0P3AhVAj5mPm1L2k4R+26s1BrwLbMeJEXUjnWUQqFEUDU8bB8rP0mV0jSqHuVg+3Q4+dE3rDlJi+1otAUMSeoDLgNTts8mR6S981WPrydCy8SVBsqk9wroBSYl/aDJksS2fQ54FsawpO+5EdkO4U4Ct4HzUZsNSeP/fcLPtt8Dg8BKLihCbsVz9gXoAvpiFHVJW7ZPBeGBx4Wp2V4H3kq635TOJeBJRuR5SQuHge4B08ALYBl4midqkR0Q2/aFOIPCLOoBrkj6lAzKAIN2P4E7kpZSDu1DIJTzTbwMbwJ/gZetQPZBsWMDrDt2cbiiR5t7JTm1dqy0wbYL/yWngJwzuE4AAAAASUVORK5CYII=" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [12]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Compute the Inverse Laplace Transform:
+f1 = inverse_laplace_transform(f1s, s, t)
+f1</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[12]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAAVCAYAAADiv3Z7AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAA51JREFUeJzdl33InmMYxn+bjwzLG8q08lGy0iaRLCHExP4ZyqTMLJIVpaa1UocDY39Z5KOEWvP5aiEiIRK2bL7ymSSRtnw2bc3XvDrtvHU993Pfz3s/76g3xz/X81wf530c13Ve53leU8bGxvi/Ys9hJtteAVwAzAJ+BTYAKyR9yCTE1CHnnw7cA5wMnAn8Abxk+0AmIabsjlva3h/YCiyQ9EzD+L7AMuAS4AjgO2AtIEm/N8xfA5wLHClpe0cOJwCbgCsl3T/w5GxfZ3vMdhAaD9PTxk8Ndg4FNgI3AO8DdwA/hxsDdzXMPxG4FFjVJKyNl6S3gaeAm3Oz28UBsROBWDQegvB7wPoakb2BOMnDgTMkLZS0HDgJ+Aq4wvaMmq2VKf7elm8N4nUbEPau7SJuG/DZIFW2bwdOAS6UtLM2vCztLJf0RtUpKew+md89tbB1NHAWMCppxwBxjbwkvQV8Clxle2pftLS9KsgUa/60Xf1eJGltMXc1cHGeyhc10dOA64HNwH0NJH/Itjy5JXH/gcfrk4fg9RhwI3A28EKPOOAdIC70ZcCbwIvF2KvFx8IVF6aw2K06zgdGgAeaggawT7a/FX1xajsztdTRiRdQeUi/OEmjtkfSyBpJfbtu++689AsiiBT3Zlu6XGB+tjNtx07WEUICX6fN/YDjgE+aAkkXXokIXoHT2pL48cVuNWFpti/X+sNPKiFxD0m3HYSPs50J7JFu3IbxeCFpq+1fgMMGiQtX+qDFQNyLVuQphPGPJM1uGJ+ed26LpC+z+6Bs+9JJV14FfgQOqf78E1lsh9A5saOSorSaCOIUAt+0jM8D9gKeK/p21O5iD4bkNa2w15MKjskPtB59B0R+C7SRuDzbB4u+b2snWEcnXt6VAkYKez3i4lIH3mXi2JLtjIaPzwXOA57PvFRhc5ZlUYw3oSuvWZlOoqjoE1ftXFQJE4Kk7yPqRcK1fWzVbzsqlUezDl1aWxPF7WvAwbaPajDbldfcbF9pCihVWbPSdgSD7RkYnhhS4y3AwxFRbT8ERJC5CAgR84tAUmJdVDrAOcDntbGuvOZlrny67+Qkxe5dk4ujVeESnSHpEWBx+v7V6YqjwGxJkYRpERfzFzXYG5eX7QMy9z4r6e/8udtPnn8T+RC+NcK+pKHuve0QfWfUq5Jen+hj9b/E6nwx3DTMIu+qZWNj1pXCApNGnKSoLqK025TFQFfEIzhKsniJ9OAvrbdb1Xz+jEAAAAAASUVORK5CYII=" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">2. Evaluate:<br><br>$$ \mathcal{L}^{-1}\frac{s}{s^2+1}= cos(t) $$<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [13]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the frequency domain function:
+f2s = s/(s**2+1)
+f2s</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[13]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAeCAYAAAC16ufeAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAglJREFUeJzll0+ITWEYxn/3OiWxslCUGQslFuYWCwvZKJmyUBZWExILGxakbB4PGwvqLi0ns5KU7mLYkBpJUvKnbFhgpTQbRWnq6tV3LDTm3Dt93HPy1Hs65/Sdt+c93/O93/O1+v0+TUGbBqHImcx2CzgHHAfGgC/AnKRDtSObiB4FTgFvgfVAJ1fy3GT3A3cl3U/P74EndSXbA67ZngBuAbclfc6VvJW7G9jeDBwEpoBNwC5Jb2pJtoTtmLV54ISkm7WSge3zwCfgKbAAHAG+Aw/rqNmVQBAeB76mhbVXUhRArWXA/76DtWkQirjYboQWWk3SbFE1wPZGYAZYl1rSZUmxO9VSswvAGUnbgH1A1/ZqmiAD2y+AA5I+8o9RDDPY9g5gRW6itvcAZ4HIvwE4Jml62a3L9lrgBnByiG+mbV8cYOga4DVwGvhW+WeXcvm2Yyu9A1yR9JjMkDQLzJYFVpL9k8tPRUSCB5KiK4wMRZXLt70bOAy8tB0+NTAl6dUoyfYWc/mSHg2qbdsXgIgSIZ++7Vg8JSYlzS2H7C8SkrrAFuBeksI721uHzHc9HRA7KXqLvHtGjtYlKbR61XY3ufztwMBHEknxTcRP2I5FOp/yZjMyf93lLwXb0bri7FbO9pjtTir0w+8yKF1+TFG0poncLr8CO4HnKVYF/3R/qbGuqz1qAsPgB18kyKN+AVjPAAAAAElFTkSuQmCC" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [14]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Compute the Inverse Laplace Transform:
+f2 = inverse_laplace_transform(f2s, s, t)
+f2</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[14]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAUCAYAAAByKzjvAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAABRdJREFUeJztmQmoVlUUhT8ro4EwykwxKqGSxFJMzSAjoYFSpAgayUoyUbKILBOM1S6taDCI0igNGmywJEQzhMoKk2aDUsOKLAvN5tCsLI0l+5f7rvc+Ffr1CS543PfuOWefdfbZ433tNm3axB7sOuy1C/feA2Cf3UELEfEEcA7QTdK67VxzEvABMELStG3MPQAYC1wKHA38ADwFSNKGZvJp19ZDUET0A961giRNrhi/AfD7yyQ9Uxp7CRgAHCtpbY38LsCrngN4/gpgCNADeFTSyGby2R1C0CTgd2Bqzbgty/iwYuwuoDNwXdXCiNgXmAMcBQySdJGkccDJwDfA1RHRuZl82vQFRMRxwBnATEnrWzmwrWl5eUDSe8BnwMiIqDrr2Fw/TtLbhXWWZ2v1moHN5LNVDoiI/sCNwKlAR+Bn4BNgmqSZhXkXAtcCvQBb0heAXW6ypL8q5A4Frk/XPgT4CfgceF7SlJrDDHeY9JwKeXdbcYVXGyOi8fswSY7hxnPAbcCZwPzC+v2Bm4BVDjUVe5uf0bmZfFpYRUSMABYB5+XzfuBloBMwujDvziRxfCr9oSTm9/PTtYtyrwFmp/LnpNx5gJVwFfWwtf0LvFMx9hHgZEhyjcLPG4V5Dcv2gYs4HzjY/KsSLbBfPv9uJp8tHhARVs6UjG8DJS0pSo+II/J5CjAeWAn0l7Q6349Ptx2Sru3LaGBkHqSXpDUluR0rDuP3BwK9gWVVlYa9MSKswCt8cElVVmy8n8/TSu8H57NrRNgiy7CyyXM2jU/RA0blhdxRVn5u8G3BDY2JDeXn+D8ZujY6eVVs7PGtLE3SjzVEuwJ7Z4ioQ5+C9VVC0m/An8CRpSGHWONiT6v4cSg2ljaTTzEHuDwyXmllg+Imr1cIXx4RvqhuEdEhNzNmZNhZGhGOgW/aFSW53q7Dofn8ZRtcNmSOag3OY4c3/khrtgKWSOpZnhwRB2UOWC1pRTP5FD3A7mN8t43FHfJZZwmrSvJ8MZPTNb/OEsyh6vuIWBARfWvkrC/F4haICBvPCb7UqqRfgnNNsWqxNbd21rOA9pmnmsqneAG/lsjVoWHV5fq4gS6leZsh6UlJA9KSHH+nZxx00j6sQs6akuWV0SOVUevuRpZ7NoZi7mkUCXWKahQGjzebTzEEObP3zRbbtWodFqernQ58WRJ+DOBk/ZWkxoW2QL63Zc1LMsPzImZVeJJDVPcaHr0LfFpD96zQPi68W11nRBFhIznXoTjr9qbyKXrA1EyUt2ZFRFUVVLCKCUXLjQgnqPtS5vTS2kER4U3L6JTPP8oDkvyN5C33InmxZTQs0VVba2jktgWlxL/MTVNEnFjg6Y742fTe0TuDzxYPkOQE6U0f8S1GxOxslCy4Xwp2u74oIu4BbgY+jYgXgXXpOU5oC4F7S5s65q+NCHuZk1q77DD7ZcvubzFVsFdcAJydjV4RjVZ/UkT0TA5Oqi9UxHPX7j5PEROzOHgtIp4GnJjdXFrRgwvJt6l8WjRikh7L8mxuhhh3ikPT9R4uzHPHd0le0LBMrJY1wQ2GpGLzYtyS9a9D1+iMse2zcxxU0wg1Drwm92gBSbbGMXnQMVk6NsLAZrgSy6ZyrqSVpfVuIK9M+aMy7LjT72kj21l8doevoeOzqesjafEOrrUiHszGcmFb5NOmP8YlHsgvk7ezA8hvPVbWrP9L+c3g0+YvQJK7xsv9z4xsoLYX/seKPwf4s0ib5fMf1zpVkvWGy24AAAAASUVORK5CYII=" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">3. Evaluate:<br>$$ \mathcal{L}^{-1}\frac{1}{s^2+1}= sin(t) $$<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [15]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the frequency domain function:
+f3s = 1/(s**2+1)
+f3s</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[15]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAfCAYAAAB+tjR7AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAfJJREFUeJzdl0+ITlEYxn/3+kpiZaEos1JiwZRZykaJslAWVkLKQooFTdk8HjYW1CwtJ5ZS07cYNqRGkpT8KRsWWCnNZpTS1KdX5xtDyv10vvnu8atzu+fe7ttzznnue85b9Xo9SqGTK5DtPcB5YBewCTghaZqM1BljrQNeA2eBrwyBahg2sP0FONPmmR06NQVRUxA1BVFTEFWubGA7UteW1H0MXAW6wLykD22b2QngeWprQn+6v9zqPDssivJsTUF04mK7CC9U/9UR0fZm4BawAVgErki6TUs9uwick7Qd2AdM2V5LCTaw/QI4KOkjba4UbEcVsCq3UDesMhqnLtvrgZvAqQG+mbZ9KVeVsTSztivgAnASGAMWgDlJh22vBmZiv5cU+35WJM0Cs/0B/lVsEnocOA28BTYC42kQEeCBpMgKI6Oz7H4/cFfS/dR/DzyxvRs4Ary0fSi9Oyrp1SjFdoHrtncCkUfvSPos6VFTb9u+CETrE/bp2Y6fp88BSXP/InZJhKQpYCtwL1nhne1tA8a7EdbhZ+v+4dkzcqQuSeHVa7ZD+DywA3jTNJik+CbaD2wvpMN3xM12kJkEPgFP0451DPgGPGQF8K9VRqz2mO3x36uMepm3JtMSRWoK3+6VFANYCSaaVBlFnbrqUQsYhO8XC7XQKxP6LgAAAABJRU5ErkJggg==" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [16]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Laplace transform (t-&gt;s)
+f3 = inverse_laplace_transform(f3s, s, t)
+f3</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[16]:</div>
+                        <div class="output-content">
+                            <img class="output-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFsAAAAUCAYAAADiOEEgAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjksIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvJkbTWQAAAAlwSFlzAAASdAAAEnQB3mYfeAAABFVJREFUeJztmX2on2MYxz/HW14jhqOVl5JleWvMSyGnvMRKpJAy28KiRmo6lPr6suEfRKKEmjFMJ2RtTtEQS4xN2BaKOWkzb6PNvGyOLl2/03Mez+/8fkfnOf3+2LdOzzn3/Vz3872v+3q9T9fg4CA7MT7YZZy+sxPAbqPVgu0jga+ABZJmjLUWbS8ALgSOkrS1TZmTgZXAdZKeaPHu3sBc4Cog9vI9sBCQpL/q5NNRlm17KnA1cF/VxmzfYnvQdihqCJI+BF4G7ra97wjrHwZ8ANwBfAw8BPwK3A48Ujef/6Psb4Fjk+BYY35u/rEm82ExgdhMGfcC3cBNVYK29wBeBY4AeiRdIakXOA34BrjWdnedfEat7HA1SeskbWAMYfsY4FxgsaRtI2xuC/B5Ba/3gXXAbNtV+5qb8r2S3i3IxXovpS7OqpPPsJht+2LgZmAycCDwI/AF8IKkR5vF7OIYcGe4XRINF/o0xiQtYWTMArriW+UJ27FeWGEDf9tu/D5dUsTcwPP5/fOA/oL8XsCtQBjI4xXfjn0GuuvkM2QBtq8HXklFh7vdDywFguhM2kO4aJxoKH9hEj0u1rXd00I2DmcH8F7F3Ed5kIEVQbfw82bhvYbFxuaKuBQ4AFhUlQSBPfP5Z518ipY9Oz92oqRNxZVtT6A9nJNWPHTMthcBr6VlLa8Ssr0PcBKwtioRSVpsO5R1TXpUlXWSyS9wdml8Wj4n2g5LKyMUGxiok085tm0H/nPykn6gPawH5pVk+zMBnTqC3ERg13TzZphSsKpKSPoF+B04vDR1Zj6vjNcqfhrc1tTJp2jZz2boWGM7Ys1b4QaSog5tF6slheuVMQCcMYLcQfn8ucXmwhA+acHhJ+DQxh9ppbHZzyRFSBsG2/tlzN4o6es6+QxZtqQH0i3WZ7kSGfo728ttn0J72NxkfHuLymdbKXYOg+0wiuPDECT90YJD5Jhi9RBW2ihZq3A+sHvmp1r5DFOApKclnZ4nG3HuyYw3/bYPpj5sKllUGZNz401dNpAlVsTSYs6J+jrQTCmN5P9U3Xwq23VJm/Okl6bArFR6H/VgQ7bNk5rMR7IKrGqxzqQs11YXxjbms7tCGWFYFwHLsi6ulU+x9OuxHRNlHJLP36gJkuLq8W1ggu2jK15pWFh0cyMhlEex6snkvjYaENsnNMZtR5n6HBBJ7Mbx4FO07IjRW2xHXRmJois7qqnZjr5OvegDLgMuAL4szTXa4fm2I8ltzYT3YkX83ZH9QhHzsgB4w/YzQCTNy4FQ6rRCYqyVTzFm35Z14ZQ86ZmZOHrzLqGqGRhL9GVsm16ekBRWNic3NSfLtYYr/wvb+wOXAEskDZTko9afkevfkKFjcTRcklaMF5+uTvrnge243LonDlzSqlHKxqYfDm+U9E4n8umoK1bgwWyA7hqNUN59hGL6xkrRdfDpKGVLim4r7o9XZjPSLuIuJlrmuNnrWD7/AGzPB2Rcfn7sAAAAAElFTkSuQmCC" alt="Output" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">4. Evaluate:<br><br>$$ \mathcal{L}^{-1}\frac{10}{(s+2)^4}= \frac{5t^3e^{-2t}}{3} $$<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [17]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the frequency domain function:</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [18]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Compute the Inverse Laplace Transform:</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">5. Evaluate:<br><br>$$ \mathcal{L}^{-1}\frac{s+1}{(s+1)^2+4} = e^{-t}cos2t $$<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [19]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the frequency domain function:
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [20]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Compute the Inverse Laplace Transform:
+</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">6. Evaluate:<br><br>$$ \mathcal{L}^{-1}\frac{15}{(s-1)^2-9} = 5e^{t}sinh3t $$<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [21]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the frequency domain function:</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [22]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Compute the Inverse Laplace Transform:</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell">7. Evaluate:<br><br>$$ \mathcal{L}^{-1}\frac{4s-1}{s^2-s}= 1 + 3e^t $$<br></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [23]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Define the frequency domain function:</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [24]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Compute the Inverse Laplace Transform:</pre></div>
+            </div>
+        </div>
+    </div>
+    <footer class="export-footer">
+        Exported with <a href="https://www.runcell.dev/tool/ipynb-to-html">runcell</a> — convert notebooks to HTML or PDF anytime at runcell.dev.
+    </footer>
+</body>
+</html>
